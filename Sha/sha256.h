@@ -4,6 +4,12 @@
 #include <inttypes.h>
 #include "Print.h"
 
+#if ARDUINO < 100
+#define __WRITE_RETURN void
+#else
+#define __WRITE_RETURN size_t
+#endif
+
 #define HASH_LENGTH 32
 #define BLOCK_LENGTH 64
 
@@ -23,7 +29,7 @@ class Sha256Class : public Print
     void initHmac(const uint8_t* secret, int secretLength);
     uint8_t* result(void);
     uint8_t* resultHmac(void);
-    virtual void write(uint8_t);
+    virtual __WRITE_RETURN write(uint8_t);
     using Print::write;
   private:
     void pad();

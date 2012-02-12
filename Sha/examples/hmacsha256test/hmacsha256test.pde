@@ -95,6 +95,7 @@ void setup() {
   "block-size data. The key needs to be hashed before being used by the HMAC algorithm.");
   printHash(Sha256.resultHmac());
   Serial.println();
+  Serial.println("+OK");
   
 }
 
